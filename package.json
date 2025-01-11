@@ -6,7 +6,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "latest-2"
+    "tag": "release-2.x"
   },
   "description": "Router middleware for egg/koa. Provides RESTful resource routing.",
   "repository": {
