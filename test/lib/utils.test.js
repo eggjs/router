@@ -1,14 +1,13 @@
 'use strict';
 
-const utils = require('../../lib/utils');
-const is = require('is-type-of');
 const assert = require('assert');
+const utils = require('../../lib/utils');
 
 describe('test/lib/utils.test.js', () => {
   describe('callFn', () => {
     it('should not function return same', () => {
       const res = utils.callFn('foo');
-      assert(is.promise(res));
+      assert(utils.isPromise(res));
       return res.then(result => assert(result === undefined));
     });
 
@@ -16,7 +15,7 @@ describe('test/lib/utils.test.js', () => {
       const res = utils.callFn(async (foo, bar) => {
         return foo + bar;
       }, [ 1, 2 ]);
-      assert(is.promise(res));
+      assert(utils.isPromise(res));
       return res.then(result => assert(result === 3));
     });
 
@@ -24,7 +23,7 @@ describe('test/lib/utils.test.js', () => {
       const res = utils.callFn(function* (foo, bar) {
         return foo + bar;
       }, [ 1, 2 ]);
-      assert(is.promise(res));
+      assert(utils.isPromise(res));
       return res.then(result => assert(result === 3));
     });
 
@@ -32,7 +31,7 @@ describe('test/lib/utils.test.js', () => {
       const res = utils.callFn((foo, bar) => {
         return foo + bar;
       }, [ 1, 2 ]);
-      assert(is.promise(res));
+      assert(utils.isPromise(res));
       return res.then(result => assert(result === 3));
     });
 
@@ -40,7 +39,7 @@ describe('test/lib/utils.test.js', () => {
       const res = utils.callFn(async function(bar) {
         return this.foo + bar;
       }, [ 2 ], { foo: 1 });
-      assert(is.promise(res));
+      assert(utils.isPromise(res));
       return res.then(result => assert(result === 3));
     });
   });
@@ -48,14 +47,14 @@ describe('test/lib/utils.test.js', () => {
   describe('middleware', () => {
     it('should work with async function', () => {
       const res = utils.middleware(async () => {});
-      assert(is.asyncFunction(res));
+      assert(utils.isAsyncFunction(res));
     });
 
     it('should work with generator function', () => {
       const res = utils.middleware(function* () {
         return;
       });
-      assert(!is.generatorFunction(res));
+      assert(!utils.isGeneratorFunction(res));
     });
   });
 });

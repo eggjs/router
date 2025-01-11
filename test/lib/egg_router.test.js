@@ -2,7 +2,7 @@
 
 const EggRouter = require('../../').EggRouter;
 const assert = require('assert');
-const is = require('is-type-of');
+const { isGeneratorFunction, isAsyncFunction } = require('../../lib/utils');
 
 describe('test/lib/egg_router.test.js', () => {
   it('creates new router with egg app', function() {
@@ -126,16 +126,16 @@ describe('test/lib/egg_router.test.js', () => {
     assert(router.stack[0].path === '/foo');
     assert.deepEqual(router.stack[0].methods, [ 'HEAD', 'GET' ]);
     assert(router.stack[0].stack.length === 4);
-    assert(!is.generatorFunction(router.stack[0].stack[0]));
-    assert(is.asyncFunction(router.stack[0].stack[1]));
-    assert(!is.generatorFunction(router.stack[0].stack[3]));
+    assert(!isGeneratorFunction(router.stack[0].stack[0]));
+    assert(isAsyncFunction(router.stack[0].stack[1]));
+    assert(!isGeneratorFunction(router.stack[0].stack[3]));
     assert(router.stack[1].name === 'hello');
     assert(router.stack[1].path === '/hello/world');
     assert.deepEqual(router.stack[1].methods, [ 'POST' ]);
     assert(router.stack[1].stack.length === 4);
-    assert(!is.generatorFunction(router.stack[1].stack[0]));
-    assert(is.asyncFunction(router.stack[1].stack[1]));
-    assert(!is.generatorFunction(router.stack[1].stack[3]));
+    assert(!isGeneratorFunction(router.stack[1].stack[0]));
+    assert(isAsyncFunction(router.stack[1].stack[1]));
+    assert(!isGeneratorFunction(router.stack[1].stack[3]));
   });
 
   it('should app.resource() work', () => {
