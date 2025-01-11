@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/eggjs/router/compare/v2.1.0...v2.1.1) (2025-01-11)
+
+
+### Bug Fixes
+
+* change repository.url to let auto release work ([39f38fc](https://github.com/eggjs/router/commit/39f38fc085a494ec46f9022b115105064b719e26))
+
 ## [2.1.0](https://github.com/eggjs/egg-router/compare/v2.0.1...v2.1.0) (2025-01-11)
 
 
