@@ -5,8 +5,7 @@
     "node": ">= 8.5.0"
   },
   "publishConfig": {
-    "access": "public",
-    "tag": "release-2.x"
+    "access": "public"
   },
   "description": "Router middleware for egg/koa. Provides RESTful resource routing.",
   "repository": {
@@ -46,7 +45,8 @@
     "koa": "^2.7.0",
     "mocha": "^2.0.1",
     "should": "^6.0.3",
-    "supertest": "^1.0.1"
+    "supertest": "^1.0.1",
+    "path-to-regexp-v8": "npm:path-to-regexp@8"
   },
   "scripts": {
     "test-local": "egg-bin test",

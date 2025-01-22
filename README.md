@@ -28,6 +28,7 @@ Router core component for [Egg.js](https://github.com/eggjs).
       - [Router.url(path, params \[, options\]) ⇒ String](#routerurlpath-params--options--string)
   - [Tests](#tests)
   - [License](#license)
+  - [Contributors](#contributors)
 
 <a name="exp_module_egg-router--Router"></a>
 
@@ -444,3 +445,9 @@ Run tests using `npm test`.
 ## License
 
 [MIT](LICENSE)
+
+## Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=eggjs/router)](https://github.com/eggjs/router/graphs/contributors)
+
+Made with [contributors-img](https://contrib.rocks).
