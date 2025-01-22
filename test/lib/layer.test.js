@@ -54,6 +54,10 @@ describe('test/lib/layer.test.js', function() {
     });
 
     it('captures URL path parameters with pathToRegexpModule', function(done) {
+      // Not working on Node.js v8
+      // SyntaxError: Invalid regular expression: /^[$_\p{ID_Start}]$/: Invalid escape
+      if (process.version.startsWith('v8.')) return;
+
       const app = new Koa();
       const router = new Router({
         pathToRegexpModule: require('path-to-regexp-v8'),

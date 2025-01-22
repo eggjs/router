@@ -188,6 +188,10 @@ describe('test/lib/egg_router.test.js', () => {
   });
 
   it('should router.url work with pathToRegexpModule', () => {
+    // Not working on Node.js v8
+    // SyntaxError: Invalid regular expression: /^[$_\p{ID_Start}]$/: Invalid escape
+    if (process.version.startsWith('v8.')) return;
+
     const app = {
       controller: {
         async foo() { return; },
