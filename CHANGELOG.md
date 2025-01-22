@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/eggjs/router/compare/v2.1.1...v2.2.0) (2025-01-22)
+
+
+### Features
+
+* support custom pathToRegexpModule ([#18](https://github.com/eggjs/router/issues/18)) ([b4b7a2c](https://github.com/eggjs/router/commit/b4b7a2c1e518846e8e22527cfe62a02a9e7ab2f9))
+
 ## [2.1.1](https://github.com/eggjs/router/compare/v2.1.0...v2.1.1) (2025-01-11)
 
 
