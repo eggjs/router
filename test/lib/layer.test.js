@@ -8,7 +8,7 @@ const Router = require('../../lib/router');
 const Layer = require('../../lib/layer');
 
 describe('test/lib/layer.test.js', function() {
-  it('composes multiple callbacks/middlware', function(done) {
+  it('composes multiple callbacks/middleware', function(done) {
     const app = new Koa();
     const router = new Router();
     app.use(router.routes());
@@ -53,7 +53,33 @@ describe('test/lib/layer.test.js', function() {
         });
     });
 
-    it('return orginal path parameters when decodeURIComponent throw error', function(done) {
+    it('captures URL path parameters with pathToRegexpModule', function(done) {
+      // Not working on Node.js v8
+      // SyntaxError: Invalid regular expression: /^[$_\p{ID_Start}]$/: Invalid escape
+      if (process.version.startsWith('v8.')) return done();
+
+      const app = new Koa();
+      const router = new Router({
+        pathToRegexpModule: require('path-to-regexp-v8'),
+      });
+      app.use(router.routes());
+      router.get('/:category/:title', function(ctx) {
+        ctx.should.have.property('params');
+        ctx.params.should.be.type('object');
+        ctx.params.should.have.property('category', 'match');
+        ctx.params.should.have.property('title', 'this');
+        ctx.status = 204;
+      });
+      request(http.createServer(app.callback()))
+        .get('/match/this')
+        .expect(204)
+        .end(function(err) {
+          if (err) return done(err);
+          done();
+        });
+    });
+
+    it('return original path parameters when decodeURIComponent throw error', function(done) {
       const app = new Koa();
       const router = new Router();
       app.use(router.routes());
@@ -94,7 +120,7 @@ describe('test/lib/layer.test.js', function() {
         });
     });
 
-    it('return orginal ctx.captures when decodeURIComponent throw error', function(done) {
+    it('return original ctx.captures when decodeURIComponent throw error', function(done) {
       const app = new Koa();
       const router = new Router();
       app.use(router.routes());
@@ -118,7 +144,7 @@ describe('test/lib/layer.test.js', function() {
         });
     });
 
-    it('populates ctx.captures with regexp captures include undefiend', function(done) {
+    it('populates ctx.captures with regexp captures include undefined', function(done) {
       const app = new Koa();
       const router = new Router();
       app.use(router.routes());

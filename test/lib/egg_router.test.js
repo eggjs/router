@@ -186,4 +186,33 @@ describe('test/lib/egg_router.test.js', () => {
     assert(router.pathFor('fooo') === '');
     assert(router.pathFor('hello') === '/hello/world');
   });
+
+  it('should router.url work with pathToRegexpModule', () => {
+    // Not working on Node.js v8
+    // SyntaxError: Invalid regular expression: /^[$_\p{ID_Start}]$/: Invalid escape
+    if (process.version.startsWith('v8.')) return;
+
+    const app = {
+      controller: {
+        async foo() { return; },
+        hello: {
+          * world() { return; },
+        },
+      },
+    };
+    const router = new EggRouter({
+      pathToRegexpModule: require('path-to-regexp-v8'),
+    }, app);
+    router.get('post', '/post/:id', app.controller.foo);
+    router.get('hello', '/hello/world', app.controller.hello.world);
+
+    assert(router.url('post', { id: 1, foo: [ 1, 2 ], bar: 'bar' }) === '/post/1?foo=1&foo=2&bar=bar');
+    assert(router.url('post', { foo: [ 1, 2 ], bar: 'bar' }) === '/post/:id?foo=1&foo=2&bar=bar');
+    assert(router.url('fooo') === '');
+    assert(router.url('hello') === '/hello/world');
+
+    assert(router.pathFor('post', { id: 1, foo: [ 1, 2 ], bar: 'bar' }) === '/post/1?foo=1&foo=2&bar=bar');
+    assert(router.pathFor('fooo') === '');
+    assert(router.pathFor('hello') === '/hello/world');
+  });
 });
