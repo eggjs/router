@@ -896,7 +896,7 @@ describe('test/lib/router.test.js', () => {
       assert.equal(res2.body.id, '1,2,3,4,5');
     });
 
-    it('does not add an erroneous (.*) to unprefiexed nested routers - gh-369 gh-410', async () => {
+    it('does not add an erroneous (.*) to unprefixed nested routers - gh-369 gh-410', async () => {
       const app = new Koa();
       const router = new Router();
       const nested = new Router();
