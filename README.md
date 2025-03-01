@@ -2,9 +2,12 @@
 
 [![NPM version](https://img.shields.io/npm/v/@eggjs/router.svg?style=flat-square)](https://npmjs.org/package/@eggjs/router)
 [![NPM download](https://img.shields.io/npm/dm/@eggjs/router.svg?style=flat-square)](https://npmjs.org/package/@eggjs/router)
-[![Node.js CI](https://github.com/eggjs/egg-router/actions/workflows/nodejs.yml/badge.svg?branch=master)](https://github.com/eggjs/egg-router/actions/workflows/nodejs.yml)
-[![Test coverage](https://img.shields.io/codecov/c/github/eggjs/egg-router.svg?style=flat-square)](https://codecov.io/gh/eggjs/egg-router)
+[![Node.js CI](https://github.com/eggjs/router/actions/workflows/nodejs.yml/badge.svg?branch=master)](https://github.com/eggjs/router/actions/workflows/nodejs.yml)
+[![Test coverage](https://img.shields.io/codecov/c/github/eggjs/router.svg?style=flat-square)](https://codecov.io/gh/eggjs/router)
 [![Known Vulnerabilities](https://snyk.io/test/npm/@eggjs/router/badge.svg?style=flat-square)](https://snyk.io/test/npm/@eggjs/router)
+[![Node.js Version](https://img.shields.io/node/v/@eggjs/router.svg?style=flat)](https://nodejs.org/en/download/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/eggjs/router)
 
 Router core component for [Egg.js](https://github.com/eggjs).
 
@@ -459,6 +462,6 @@ Run tests using `npm test`.
 
 ## Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=eggjs/egg-router)](https://github.com/eggjs/egg-router/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=eggjs/router)](https://github.com/eggjs/router/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).
