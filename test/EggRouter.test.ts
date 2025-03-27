@@ -331,6 +331,33 @@ describe('test/EggRouter.test.ts', () => {
     assert.equal(router.stack[5].name, 'api_posts');
   });
 
+  it('should app.resource() with multiple middlewares work', () => {
+    const app = {
+      controller: {
+        post: {
+          async index() { return; },
+          async show() { return; },
+          async create() { return; },
+          async update() { return; },
+          async new() { return; },
+        },
+      },
+    };
+
+    const asyncMiddleware1 = async function() { return; };
+    const asyncMiddleware2 = async function() { return; };
+
+    const router = new EggRouter({}, app);
+    router.resources('/post', asyncMiddleware1, asyncMiddleware2, app.controller.post);
+    assert.equal(router.stack.length, 5);
+    assert.equal(router.stack[0].stack.length, 3);
+
+    router.resources('api_post', '/api/post', asyncMiddleware1, asyncMiddleware2, app.controller.post);
+    assert.equal(router.stack.length, 10);
+    assert.equal(router.stack[5].stack.length, 3);
+    assert.equal(router.stack[5].name, 'api_posts');
+  });
+
   it('should router.url work', () => {
     const app = {
       controller: {

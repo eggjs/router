@@ -170,6 +170,7 @@ export class EggRouter extends Router {
    * app.resources('/posts', 'posts')
    * app.resources('posts', '/posts', 'posts')
    * app.resources('posts', '/posts', app.role.can('user'), app.controller.posts)
+   * app.resources('posts', '/posts', middleware1, middleware2, app.controller.posts)
    * ```
    *
    * Examples:
@@ -208,6 +209,7 @@ export class EggRouter extends Router {
   resources(prefix: string, middleware: MiddlewareFunc, controller: string | ResourcesController): Router;
   resources(name: string, prefix: string, controller: string | ResourcesController): Router;
   resources(name: string, prefix: string, middleware: MiddlewareFunc, controller: string | ResourcesController): Router;
+  resources(nameOrPath: string | RegExp, ...middleware: (MiddlewareFunc | string | ResourcesController)[]): Router;
   resources(nameOrPath: string | RegExp, pathOrMiddleware: string | RegExp | MiddlewareFunc | ResourcesController,
     ...middleware: (MiddlewareFunc | string | ResourcesController)[]): Router {
     const { path, middlewares, options } = this._formatRouteParams(nameOrPath, pathOrMiddleware, middleware);
