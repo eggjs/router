@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.6](https://github.com/eggjs/router/compare/v3.0.5...v3.0.6) (2025-03-27)
+
+
+### Bug Fixes
+
+* resources should support multiple middlewares ([#21](https://github.com/eggjs/router/issues/21)) ([acb9c4b](https://github.com/eggjs/router/commit/acb9c4b3e91f7cad0f9605e3a2ca5e68dad270b9))
+
 ## [3.0.5](https://github.com/eggjs/egg-router/compare/v3.0.4...v3.0.5) (2024-06-16)
 
 
