@@ -331,7 +331,7 @@ describe('test/EggRouter.test.ts', () => {
     assert.equal(router.stack[5].name, 'api_posts');
   });
 
-  it('should app.resource() with multiple middlewares work', () => {
+  it('should app.resources() with multiple middlewares work', () => {
     const app = {
       controller: {
         post: {
